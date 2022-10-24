@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/lazer.mp3-857c4c420aff41d1f154dafff228af85.mp3str"
+
+[deps]
+
+source_file="res://src/assets/sfx/lazer.mp3"
+dest_files=[ "res://.import/lazer.mp3-857c4c420aff41d1f154dafff228af85.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
