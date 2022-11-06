@@ -4,10 +4,9 @@ var vec = Vector2()
 
 func _ready():
 	print("Shooting projectile")
-	vec.y = -600
+	vec.y = -1500
 
 func _physics_process(delta):
-	move_and_slide(vec)
+	move_and_slide(vec, Vector2.UP)
 
-
-#needs to repair infinite spawn bug and position relative to spaceship (it should go JUST up-way)
+#needs to repair position relative to spaceship (it should go JUST up-way)

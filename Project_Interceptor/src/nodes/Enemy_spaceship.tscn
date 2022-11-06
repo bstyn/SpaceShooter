@@ -5,7 +5,8 @@
 
 [node name="Enemy_spaceship" type="KinematicBody2D"]
 rotation = 3.14159
-collision_layer = 2
+collision_layer = 4
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Pngkeycom-nasa-spaceship-png-3220715" type="Sprite" parent="."]

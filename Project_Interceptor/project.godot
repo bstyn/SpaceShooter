@@ -54,6 +54,12 @@ shoot={
  ]
 }
 
+[layer_names]
+
+2d_render/layer_1="Player_area"
+2d_render/layer_2="Main_scene"
+2d_render/layer_3="Enemies"
+
 [physics]
 
 common/enable_pause_aware_picking=true

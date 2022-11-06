@@ -21,7 +21,7 @@ func _physics_process(delta):
 		vec.y += speed
 	if Input.is_action_pressed("move_up"):
 		vec.y -= speed
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		shoot()
 	
 	move_and_slide(vec, Vector2.UP)
@@ -30,4 +30,5 @@ func shoot():
 	
 	var laser = load("res://src/nodes/Laser_bullet.tscn")
 	var bullet = laser.instance()
-	add_child_below_node(get_tree().get_root().get_node("MainScene"),bullet)
+	bullet.vec.x = vec.x
+	add_child_below_node(get_tree().get_root().get_node("MainScene"), bullet)
