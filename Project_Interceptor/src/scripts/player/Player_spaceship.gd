@@ -27,8 +27,7 @@ func _physics_process(delta):
 	move_and_slide(vec, Vector2.UP)
 
 func shoot():
-	
-	var laser = load("res://src/nodes/Laser_bullet.tscn")
+	var laser = preload("res://src/nodes/Laser_bullet.tscn")
 	var bullet = laser.instance()
-	bullet.vec.x = vec.x
-	add_child_below_node(get_tree().get_root().get_node("MainScene"), bullet)
+	bullet.position = Vector2(position.x, position.y)
+	get_parent().call_deferred("add_child", bullet)
