@@ -18,6 +18,7 @@ func _on_Area2D_area_entered(area):
 		area.get_parent().queue_free()
 		health -= 1
 		if health == 0:
+			Global.Score += 1
 			queue_free()
 		
 func shoot():

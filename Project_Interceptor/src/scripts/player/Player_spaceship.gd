@@ -6,7 +6,8 @@ var speed : int = 300
 
 var vec : Vector2 = Vector2()
 
-var health = 3
+var max_health = 3
+var current_health = 3
 
 var can_fire = true
 
@@ -43,7 +44,7 @@ func shoot():
 func _on_Area2D_area_entered(area):
 	if area.name == "enemy_laser_bullet_area":
 		area.get_parent().queue_free()
-		#health -= 1
-		if health == 0:
+		current_health -= 1
+		if current_health == 0:
 			queue_free()
 	pass
