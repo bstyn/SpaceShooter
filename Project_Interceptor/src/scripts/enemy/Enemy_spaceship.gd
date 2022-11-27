@@ -11,7 +11,7 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	velocity.x += 1
-	velocity = move_and_slide(velocity.normalized() * speed)
+	velocity = move_and_slide(velocity.normalized() * speed, Vector2.DOWN)
 
 func _on_Area2D_area_entered(area):
 	if area.name == "player_laser_bullet_area":

@@ -6,21 +6,8 @@
 [ext_resource path="res://addons/terminal/theme/theme.tres" type="Theme" id=4]
 [ext_resource path="res://src/scripts/enemy/Spawn.gd" type="Script" id=5]
 [ext_resource path="res://src/nodes/HealthBar.gd" type="Script" id=6]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.662745, 0.105882, 0.105882, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.254902, 0.25098, 0.25098, 1 )
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0, 0, 0, 1 )
+[ext_resource path="res://src/assets/sprites/Hp Bar/full.png" type="Texture" id=7]
+[ext_resource path="res://src/assets/sprites/Hp Bar/empty.png" type="Texture" id=8]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 5 )
@@ -44,16 +31,16 @@ text = "0"
 align = 2
 valign = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="GUI"]
+[node name="HP Bar" type="TextureProgress" parent="GUI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -20.0
-margin_right = 260.0
+margin_top = -38.0
+margin_right = 244.0
+margin_bottom = 19.0
 theme = ExtResource( 4 )
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
 value = 66.0
-percent_visible = false
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 7 )
 script = ExtResource( 6 )
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
