@@ -9,4 +9,4 @@ func _process(delta):
 		self.value = current_health * 100/max_health
 	else:
 		self.value = 0
-		queue_free()
+		self.queue_free()

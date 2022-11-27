@@ -46,5 +46,8 @@ func _on_Area2D_area_entered(area):
 		area.get_parent().queue_free()
 		current_health -= 1
 		if current_health == 0:
-			queue_free()
+			self.queue_free()
+	if area.name == "drop_area":
+		area.get_parent().queue_free()
+		#logic of changing weapons goes here
 	pass
