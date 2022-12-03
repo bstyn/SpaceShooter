@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var health = 2
+var health = 3
 export (int) var speed = 80
 var one_drop_chance_percent = 2
 var velocity = Vector2(0, 5)
@@ -15,12 +15,15 @@ func _physics_process(_delta: float) -> void:
 
 func _on_Area2D_area_entered(area):
 	if area.name == "player_laser_bullet_area":
+		health -= area.get_parent().player_bullet_dmg
 		area.get_parent().queue_free()
-		health -= 1
-		if health == 0:
-			Global.Score += 1
+	elif area.name == "player_laser_ringbullet_area":
+		health -= area.get_parent().player_bullet_dmg
+	if health <= 0:
+			Global.Score += 5
 			generate_drop()
 			self.queue_free()
+		
 		
 func shoot():
 	var bullet_spawn_time = randi() % 5 + 1
@@ -36,16 +39,17 @@ func generate_drop():
 	var drop_node = preload("res://src/nodes/Drop.tscn")
 	var drop = drop_node.instance()
 	drop.position = Vector2(position.x, position.y)
+	var sprite = drop.get_node("Sprite")
 	if (drop_spawn_chance_range <= one_drop_chance_percent * 1):
-		drop.get_node("Blue").show()
+		sprite.get_node("Blue").show()
 	elif (drop_spawn_chance_range <= one_drop_chance_percent * 2):
-		drop.get_node("Green").show()
+		sprite.get_node("Green").show()
 	elif (drop_spawn_chance_range <= one_drop_chance_percent * 3):
-		drop.get_node("Orange").show()
+		sprite.get_node("Orange").show()
 	elif (drop_spawn_chance_range <= one_drop_chance_percent * 4):
-		drop.get_node("Pink").show()
+		sprite.get_node("Pink").show()
 	elif (drop_spawn_chance_range <= one_drop_chance_percent * 5):
-		drop.get_node("Red").show()
+		sprite.get_node("Red").show()
 	elif (drop_spawn_chance_range <= one_drop_chance_percent * 6):
-		drop.get_node("White").show()
+		sprite.get_node("White").show()
 	get_parent().call_deferred("add_child", drop)
