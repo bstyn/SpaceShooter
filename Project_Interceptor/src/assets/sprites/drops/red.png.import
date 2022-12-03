@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pobrany plik.png-b6f4a5dcf27c6dfb934956c1516015fc.stex"
+path="res://.import/red.png-4b543875ee24cdf96b3bd202a53835b6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/assets/sprites/pobrany plik.png"
-dest_files=[ "res://.import/pobrany plik.png-b6f4a5dcf27c6dfb934956c1516015fc.stex" ]
+source_file="res://src/assets/sprites/drops/red.png"
+dest_files=[ "res://.import/red.png-4b543875ee24cdf96b3bd202a53835b6.stex" ]
 
 [params]
 
