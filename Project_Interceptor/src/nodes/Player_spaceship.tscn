@@ -3,7 +3,6 @@
 [ext_resource path="res://src/assets/sprites/Spaceship/pngkey.com-nasa-spaceship-png-3220715.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/player/Player_spaceship.gd" type="Script" id=2]
 
-
 [node name="Player_spaceship" type="KinematicBody2D"]
 collision_layer = 9
 collision_mask = 0

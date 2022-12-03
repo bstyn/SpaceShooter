@@ -6,46 +6,12 @@
 [ext_resource path="res://src/assets/sprites/drops/pink.png" type="Texture" id=4]
 [ext_resource path="res://src/assets/sprites/drops/red.png" type="Texture" id=5]
 [ext_resource path="res://src/assets/sprites/drops/green.png" type="Texture" id=6]
-[ext_resource path="res://src/nodes/Drop.gd" type="Script" id=7]
+[ext_resource path="res://src/scripts/enemy/Drop.gd" type="Script" id=7]
 
 [node name="Drop" type="KinematicBody2D"]
 collision_layer = 0
-collision_mask = 8
+collision_mask = 0
 script = ExtResource( 7 )
-
-[node name="Blue" type="Sprite" parent="."]
-visible = false
-scale = Vector2( 0.195238, 0.195238 )
-texture = ExtResource( 1 )
-
-[node name="Green" type="Sprite" parent="."]
-visible = false
-position = Vector2( 3.8147e-06, 7.62939e-06 )
-scale = Vector2( 0.192308, 0.192308 )
-texture = ExtResource( 6 )
-
-[node name="Orange" type="Sprite" parent="."]
-visible = false
-position = Vector2( 3.8147e-06, 7.62939e-06 )
-scale = Vector2( 0.192308, 0.192308 )
-texture = ExtResource( 2 )
-
-[node name="Pink" type="Sprite" parent="."]
-visible = false
-position = Vector2( 3.8147e-06, 1.52588e-05 )
-scale = Vector2( 0.192308, 0.192308 )
-texture = ExtResource( 4 )
-
-[node name="Red" type="Sprite" parent="."]
-visible = false
-scale = Vector2( 0.186275, 0.186274 )
-texture = ExtResource( 5 )
-
-[node name="White" type="Sprite" parent="."]
-visible = false
-position = Vector2( 5.42101e-20, 1.0842e-19 )
-scale = Vector2( 0.192308, 0.192308 )
-texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 0, 7.62939e-06 )
@@ -58,3 +24,39 @@ polygon = PoolVector2Array( -52, -56, 0, -87, 52, -56, 52, 56, 1, 87, -52, 56 )
 position = Vector2( 0, -3.8147e-06 )
 scale = Vector2( 0.211538, 0.211538 )
 polygon = PoolVector2Array( -52, -56, 0, -87, 52, -56, 52, 56, 1, 87, -52, 56, -52, -8.62082 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="White" type="Sprite" parent="Sprite"]
+visible = false
+position = Vector2( 5.42101e-20, 1.0842e-19 )
+scale = Vector2( 0.192308, 0.192308 )
+texture = ExtResource( 3 )
+
+[node name="Red" type="Sprite" parent="Sprite"]
+visible = false
+scale = Vector2( 0.186275, 0.186274 )
+texture = ExtResource( 5 )
+
+[node name="Pink" type="Sprite" parent="Sprite"]
+visible = false
+position = Vector2( 3.8147e-06, 1.52588e-05 )
+scale = Vector2( 0.192308, 0.192308 )
+texture = ExtResource( 4 )
+
+[node name="Orange" type="Sprite" parent="Sprite"]
+visible = false
+position = Vector2( 3.8147e-06, 7.62939e-06 )
+scale = Vector2( 0.192308, 0.192308 )
+texture = ExtResource( 2 )
+
+[node name="Green" type="Sprite" parent="Sprite"]
+visible = false
+position = Vector2( 3.8147e-06, 7.62939e-06 )
+scale = Vector2( 0.192308, 0.192308 )
+texture = ExtResource( 6 )
+
+[node name="Blue" type="Sprite" parent="Sprite"]
+visible = false
+scale = Vector2( 0.195238, 0.195238 )
+texture = ExtResource( 1 )
