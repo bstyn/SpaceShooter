@@ -52,4 +52,8 @@ func generate_drop():
 		sprite.get_node("Red").show()
 	elif (drop_spawn_chance_range <= one_drop_chance_percent * 6):
 		sprite.get_node("White").show()
-	get_parent().call_deferred("add_child", drop)
+	elif (drop_spawn_chance_range <= one_drop_chance_percent * 7):
+		sprite.get_node("Hearth").show()
+	if (drop_spawn_chance_range < one_drop_chance_percent * 7):
+		get_parent().call_deferred("add_child", drop)
+	
