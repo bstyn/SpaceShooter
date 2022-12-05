@@ -22,7 +22,8 @@ func _input(event):
 			selected_menu = 0
 			change_menu_color()
 			# Show popup
-			player.set_process_input(false)
+			if is_instance_valid(player):
+				player.set_process_input(false)
 			popup()
 	else:
 		if Input.is_action_just_pressed("ui_down"):
@@ -38,7 +39,8 @@ func _input(event):
 			if get_tree().paused:
 					get_tree().paused = false
 					hide()
-					player.set_process_input(true)
+					if is_instance_valid(player):
+						player.set_process_input(false)
 					
 		elif Input.is_action_just_pressed("ui_accept"):
 			match selected_menu:
@@ -47,7 +49,8 @@ func _input(event):
 					if get_tree().paused:
 						hide()
 						get_tree().paused = false				
-						player.set_process_input(true)
+						if is_instance_valid(player):
+							player.set_process_input(false)
 					
 				1:
 					# Quit game
