@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/nodes/Player_spaceship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/nodes/Score.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/nodes/HealthBar.gd" type="Script" id=6]
 [ext_resource path="res://src/assets/sprites/Hp Bar/full.png" type="Texture" id=7]
 [ext_resource path="res://src/assets/sprites/Hp Bar/empty.png" type="Texture" id=8]
+[ext_resource path="res://src/nodes/MenuPopup.gd" type="Script" id=9]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 5 )
@@ -38,9 +39,68 @@ margin_top = -38.0
 margin_right = 244.0
 margin_bottom = 19.0
 theme = ExtResource( 4 )
-value = 66.0
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_progress = ExtResource( 7 )
 script = ExtResource( 6 )
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+
+[node name="Popup" type="Popup" parent="PauseMenu"]
+pause_mode = 2
+visible = true
+margin_right = 40.0
+margin_bottom = 40.0
+popup_exclusive = true
+script = ExtResource( 9 )
+
+[node name="Background" type="ColorRect" parent="PauseMenu/Popup"]
+anchor_right = 25.612
+anchor_bottom = 15.006
+margin_left = 256.0
+margin_top = 150.0
+margin_right = -256.48
+margin_bottom = -200.24
+color = Color( 0.470588, 0.470588, 0.470588, 0.607843 )
+
+[node name="Resume" type="ColorRect" parent="PauseMenu/Popup"]
+anchor_right = 25.596
+anchor_bottom = 14.95
+margin_left = 384.0
+margin_top = 200.0
+margin_right = -373.84
+margin_bottom = -348.0
+
+[node name="Label" type="Label" parent="PauseMenu/Popup/Resume"]
+anchor_left = -1.465
+anchor_top = -5.74
+margin_left = 389.69
+margin_top = 287.0
+margin_right = 266.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "
+Resume
+"
+align = 1
+valign = 1
+
+[node name="Quit" type="ColorRect" parent="PauseMenu/Popup"]
+anchor_right = 25.608
+anchor_bottom = 14.962
+margin_left = 384.0
+margin_top = 300.0
+margin_right = -374.32
+margin_bottom = -248.48
+
+[node name="Label" type="Label" parent="PauseMenu/Popup/Quit"]
+margin_right = 266.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "
+Exit Game
+"
+align = 1
+valign = 1
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
