@@ -12,6 +12,6 @@ func _on_EnemyTimer_timeout():
 	
 func delete_self(e):
 	#delete after sometime for stability
-	yield(get_tree().create_timer(spawn_time), "timeout")
+	yield(get_tree().create_timer(spawn_time,false), "timeout")
 	if is_instance_valid(e):
 		e.queue_free()
