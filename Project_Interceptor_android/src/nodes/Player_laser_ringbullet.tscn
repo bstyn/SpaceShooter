@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/assets/sprites/Spaceship/bullet_ring.png" type="Texture" id=1]
+[ext_resource path="res://src/scripts/player/Player_laser_bullet.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.6667
+
+[node name="Player_laser_ringbullet" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="player_laser_ringbullet_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_laser_ringbullet_area"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.164234, 0.150938 )
+scale = Vector2( 0.0342976, 0.0343582 )
+texture = ExtResource( 1 )

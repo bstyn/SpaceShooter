@@ -4,9 +4,10 @@
 [ext_resource path="res://src/scripts/player/Player_laser_bullet.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 17.0
+radius = 16.6667
 
 [node name="Player_laser_ringbullet" type="KinematicBody2D"]
+scale = Vector2( 1.2, 1.2 )
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 2 )

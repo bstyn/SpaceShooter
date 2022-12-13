@@ -13,10 +13,12 @@
 script = ExtResource( 5 )
 
 [node name="Player_spaceship" parent="." instance=ExtResource( 1 )]
-position = Vector2( 512, 560 )
+position = Vector2( 715, 710 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Player_area" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 408 )
+position = Vector2( 0, 528 )
+scale = Vector2( 1.40672, 1.81393 )
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 1.4
@@ -25,7 +27,7 @@ autostart = true
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="Score" parent="GUI" instance=ExtResource( 2 )]
-margin_right = -5.0
+margin_left = -148.0
 grow_horizontal = 0
 text = "0"
 align = 2
@@ -34,9 +36,9 @@ valign = 1
 [node name="HP Bar" type="TextureProgress" parent="GUI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -38.0
+margin_top = -39.0
 margin_right = 244.0
-margin_bottom = 19.0
+margin_bottom = 18.0
 theme = ExtResource( 4 )
 value = 66.0
 texture_under = ExtResource( 8 )
