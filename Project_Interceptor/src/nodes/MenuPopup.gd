@@ -4,14 +4,15 @@ onready var player = get_node("../../Player_spaceship")
 var selected_menu
 
 func change_menu_color():
-	$Resume.color = Color.gray
-	$Quit.color = Color.gray
+	$Resume.color = Color(94.0/255.0,94.0/255.0,94.0/255.0)
+	$Quit.color = Color(94.0/255.0,94.0/255.0,94.0/255.0)
+	
 	
 	match selected_menu:
 		0:
-			$Resume.color = Color(94.0/255.0,94.0/255.0,94.0/255.0)
+			$Resume.color = Color.gray
 		1:
-			$Quit.color = Color(94.0/255.0,94.0/255.0,94.0/255.0)
+			$Quit.color = Color.gray
 
 func _input(event):
 	if not visible:
