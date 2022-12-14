@@ -27,7 +27,7 @@ func _on_Area2D_area_entered(area):
 		
 func shoot():
 	var bullet_spawn_time = randi() % 5 + 1
-	yield(get_tree().create_timer(bullet_spawn_time), "timeout")
+	yield(get_tree().create_timer(bullet_spawn_time,false), "timeout")
 	var laser = preload("res://src/nodes/Enemy_laser_bullet.tscn")
 	var bullet = laser.instance()
 	bullet.position = Vector2(position.x, position.y)
@@ -52,4 +52,8 @@ func generate_drop():
 		sprite.get_node("Red").show()
 	elif (drop_spawn_chance_range <= one_drop_chance_percent * 6):
 		sprite.get_node("White").show()
-	get_parent().call_deferred("add_child", drop)
+	elif (drop_spawn_chance_range <= one_drop_chance_percent * 7):
+		sprite.get_node("Hearth").show()
+	if (drop_spawn_chance_range < one_drop_chance_percent * 7):
+		get_parent().call_deferred("add_child", drop)
+	

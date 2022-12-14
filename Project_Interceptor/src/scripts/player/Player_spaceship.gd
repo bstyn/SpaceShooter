@@ -135,6 +135,11 @@ func change_weapons(sprite):
 		bullets_type = "more_dmg"
 		timer.set_wait_time(10)
 		timer.start()
+	elif sprite.get_node("Hearth").is_visible():
+		if current_health < max_health:
+			current_health += 1
+		else:
+			Global.Score += 15
 
 func on_timeout_complete():
 	print("Timeout complete")
