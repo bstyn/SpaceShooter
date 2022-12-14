@@ -4,7 +4,7 @@ var score : int = 0
 
 var speed : int = 250
 
-var vec : Vector2 = Vector2()
+var vec : Vector2 = Vector2(0,0)
 
 var max_health = 3
 var current_health = 3
@@ -23,23 +23,12 @@ func _ready():
 	print("Timeout init")
 
 func _physics_process(_delta):
-
-	vec.x = 0
-	vec.y = 0
-	
-	if Input.is_action_pressed("move_left"):
-		vec.x -= speed
-	if Input.is_action_pressed("move_right"):
-		vec.x += speed
-	if Input.is_action_pressed("move_down"):
-		vec.y += speed
-	if Input.is_action_pressed("move_up"):
-		vec.y -= speed
-	if can_fire and Input.is_action_pressed("shoot"):
+	var joystick = get_tree().get_root().get_node("MainScene/GUI/Joystick")
+	vec = joystick.get_velo()
+	if can_fire and joystick.touched:
 		can_fire = false
 		shoot()
-	
-	move_and_slide(vec, Vector2.UP)
+	move_and_slide(vec * speed, Vector2.UP)
 
 func shoot():
 	var laser = preload("res://src/nodes/Player_laser_bullet.tscn")

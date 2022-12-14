@@ -45,7 +45,7 @@ texture_under = ExtResource( 8 )
 texture_progress = ExtResource( 7 )
 script = ExtResource( 6 )
 
-[node name="Joystick" parent="." instance=ExtResource( 9 )]
-position = Vector2( 384, 832 )
+[node name="Joystick" parent="GUI" instance=ExtResource( 9 )]
+position = Vector2( 392, 864 )
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
