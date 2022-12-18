@@ -51,35 +51,31 @@ script = ExtResource( 6 )
 [node name="Popup" type="Popup" parent="PauseMenu"]
 pause_mode = 2
 visible = true
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 popup_exclusive = true
 script = ExtResource( 9 )
 
 [node name="Background" type="ColorRect" parent="PauseMenu/Popup"]
-anchor_right = 25.612
-anchor_bottom = 15.006
-margin_left = 256.0
-margin_top = 150.0
-margin_right = -256.48
-margin_bottom = -200.24
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 360.0
+margin_top = 225.0
+margin_right = -360.0
+margin_bottom = -225.0
 color = Color( 0.470588, 0.470588, 0.470588, 0.607843 )
 
 [node name="Resume" type="ColorRect" parent="PauseMenu/Popup"]
-anchor_right = 25.596
-anchor_bottom = 14.95
-margin_left = 384.0
-margin_top = 200.0
-margin_right = -373.84
-margin_bottom = -348.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 540.0
+margin_top = 308.333
+margin_right = -540.0
+margin_bottom = -479.167
 
 [node name="Label" type="Label" parent="PauseMenu/Popup/Resume"]
-anchor_left = -1.465
-anchor_top = -5.74
-margin_left = 389.69
-margin_top = 287.0
-margin_right = 266.0
-margin_bottom = 50.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "
 Resume
@@ -88,16 +84,19 @@ align = 1
 valign = 1
 
 [node name="Quit" type="ColorRect" parent="PauseMenu/Popup"]
-anchor_right = 25.608
-anchor_bottom = 14.962
-margin_left = 384.0
-margin_top = 300.0
-margin_right = -374.32
-margin_bottom = -248.48
+anchor_left = 0.251
+anchor_top = 0.252
+anchor_right = 0.75
+anchor_bottom = 0.75
+margin_left = 178.56
+margin_top = 252.37
+margin_right = -180.0
+margin_bottom = -83.33
 
 [node name="Label" type="Label" parent="PauseMenu/Popup/Quit"]
-margin_right = 266.0
-margin_bottom = 50.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -3.05176e-05
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "
 Exit Game
