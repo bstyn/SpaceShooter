@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var health = 3
+var health = Global.enemyHealth
 export (int) var speed = 80
 var one_drop_chance_percent = 2
 var velocity = Vector2(0, 5)
@@ -10,7 +10,7 @@ func _ready():
 	pass 
 
 func _physics_process(_delta: float) -> void:
-	velocity.x += 1
+	velocity.y -= 1
 	velocity = move_and_slide(velocity.normalized() * speed, Vector2.DOWN)
 
 func _on_Area2D_area_entered(area):

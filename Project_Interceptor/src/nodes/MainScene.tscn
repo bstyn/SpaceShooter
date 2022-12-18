@@ -22,7 +22,7 @@ position = Vector2( 0, 528 )
 scale = Vector2( 1.40672, 1.81393 )
 
 [node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 1.4
+wait_time = 3.0
 autostart = true
 
 [node name="GUI" type="CanvasLayer" parent="."]
