@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sky_artifacts.mp3-83250ee0f4665f1810ff4eb0c562f56e.mp3str"
+
+[deps]
+
+source_file="res://src/assets/sfx/sky_artifacts.mp3"
+dest_files=[ "res://.import/sky_artifacts.mp3-83250ee0f4665f1810ff4eb0c562f56e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

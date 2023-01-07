@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/space_race.mp3-ea69a7bd7af7bc61a0522cb6c8bd80c9.mp3str"
+
+[deps]
+
+source_file="res://src/assets/sfx/space_race.mp3"
+dest_files=[ "res://.import/space_race.mp3-ea69a7bd7af7bc61a0522cb6c8bd80c9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

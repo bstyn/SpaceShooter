@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/space_music_ambient.mp3-f23e21d6b354f952ba26236187b4f222.mp3str"
+
+[deps]
+
+source_file="res://src/assets/sfx/space_music_ambient.mp3"
+dest_files=[ "res://.import/space_music_ambient.mp3-f23e21d6b354f952ba26236187b4f222.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
