@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/enemy_laser.mp3-43f94a6aee79f6458cab218b2f5a605b.mp3str"
+
+[deps]
+
+source_file="res://src/assets/sfx/enemy_laser.mp3"
+dest_files=[ "res://.import/enemy_laser.mp3-43f94a6aee79f6458cab218b2f5a605b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

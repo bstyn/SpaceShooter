@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/destroyed.mp3-eff378ccfa5a60548817999f147c26c2.mp3str"
+
+[deps]
+
+source_file="res://src/assets/sfx/destroyed.mp3"
+dest_files=[ "res://.import/destroyed.mp3-eff378ccfa5a60548817999f147c26c2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
