@@ -63,9 +63,6 @@ func shoot():
 		bullet2.position = Vector2(position.x, position.y)
 		var bullet3 = laser.instance()
 		bullet3.position = Vector2(position.x+25, position.y-15)
-		#thinking about adding rotation to bullet staring poing - but dont know how to
-#		bullet.rotation_degrees(-45)
-#		bullet3.rotation_degrees(45)
 		get_parent().call_deferred("add_child", bullet)
 		get_parent().call_deferred("add_child", bullet2)
 		get_parent().call_deferred("add_child", bullet3)

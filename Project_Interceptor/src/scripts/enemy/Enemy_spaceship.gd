@@ -1,9 +1,10 @@
 extends KinematicBody2D
 
 var health = Global.enemyHealth
-export (int) var speed = 80
+export (int) var speed = 125
 var one_drop_chance_percent = 2
 var velocity = Vector2(0, 5)
+onready var audio_destroyed = $AudioStreamPlayer2D
 
 func _ready():
 	shoot()
@@ -19,11 +20,14 @@ func _on_Area2D_area_entered(area):
 		area.get_parent().queue_free()
 	elif area.name == "player_laser_ringbullet_area":
 		health -= area.get_parent().player_bullet_dmg
-	if health <= 0:
-			Global.Score += 5
-			generate_drop()
-			self.queue_free()
-		
+	if health == 0:
+		if !audio_destroyed.is_playing():
+				audio_destroyed.play()
+				yield(audio_destroyed, "finished")
+		Global.Score += 5
+		generate_drop()
+		self.queue_free()
+	
 		
 func shoot():
 	var bullet_spawn_time = randi() % 5 + 1

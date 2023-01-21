@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/assets/sprites/Spaceship/bullet_ring.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/player/Player_laser_bullet.gd" type="Script" id=2]
-[ext_resource path="res://src/assets/sfx/lazer.mp3" type="AudioStream" id=3]
+[ext_resource path="res://src/assets/sfx/laser.mp3" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.6667
