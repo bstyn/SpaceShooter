@@ -14,6 +14,8 @@ var can_fire = true
 var bullets_type = "normal"
 var timer = null
 
+var Explosion = preload ("res://src/nodes/Explosion2.tscn")
+
 func _ready():
 	timer = Timer.new()
 	timer.set_one_shot(true)
@@ -98,8 +100,12 @@ func _on_Area2D_area_entered(area):
 	if area.name == "enemy_laser_bullet_area":
 		area.get_parent().queue_free()
 		current_health -= 1
+		blink()
 		if current_health <= 0:
 			self.queue_free()
+			var explosion = Explosion.instance()
+			get_parent().add_child(explosion)
+			explosion.global_position = global_position
 	if area.name == "drop_area":
 		var sprite = area.get_parent().get_node("Sprite")
 		area.get_parent().queue_free()
@@ -137,6 +143,11 @@ func change_weapons(sprite):
 			current_health += 1
 		else:
 			Global.Score += 15
+
+func blink():
+	hide()
+	yield(get_tree().create_timer(0.05,false), "timeout")
+	show()
 
 func on_timeout_complete():
 	print("Timeout complete")

@@ -5,6 +5,8 @@ export (int) var speed = 125
 var one_drop_chance_percent = 2
 var velocity = Vector2(0, 5)
 onready var audio_destroyed = $AudioStreamPlayer2D
+var Explosion = preload ("res://src/nodes/Explosion2.tscn")
+
 
 func _ready():
 	shoot()
@@ -17,17 +19,20 @@ func _physics_process(_delta: float) -> void:
 func _on_Area2D_area_entered(area):
 	if area.name == "player_laser_bullet_area":
 		health -= area.get_parent().player_bullet_dmg
+		blink()
 		area.get_parent().queue_free()
 	elif area.name == "player_laser_ringbullet_area":
 		health -= area.get_parent().player_bullet_dmg
-	if health == 0:
+	if health <= 0:
 		if !audio_destroyed.is_playing():
-				audio_destroyed.play()
-				yield(audio_destroyed, "finished")
+			AudioPlayer.play("res://src/assets/sfx/destroyed.mp3")
 		Global.Score += 5
 		generate_drop()
 		self.queue_free()
-	
+		var explosion = Explosion.instance()
+		get_parent().add_child(explosion)
+		explosion.global_position = global_position
+		
 		
 func shoot():
 	var bullet_spawn_time = randi() % 5 + 1
@@ -61,3 +66,8 @@ func generate_drop():
 	if (drop_spawn_chance_range < one_drop_chance_percent * 7):
 		get_parent().call_deferred("add_child", drop)
 	
+func blink():
+	hide()
+	yield(get_tree().create_timer(0.05,false), "timeout")
+	show()
+		
