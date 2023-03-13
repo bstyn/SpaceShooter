@@ -19,15 +19,16 @@ var Explosion = preload ("res://src/nodes/Explosion2.tscn")
 func _ready():
 	timer = Timer.new()
 	timer.set_one_shot(true)
-	timer.set_wait_time(0)
 	timer.connect("timeout", self, "on_timeout_complete")
 	add_child(timer)
 	print("Timeout init")
 
-func _physics_process(_delta):
 
-	vec.x = 0
-	vec.y = 0
+func _physics_process(_delta):
+	
+
+	var joystick = get_tree().get_root().get_node("MainScene/GUI/Joystick")
+	vec = joystick.get_velo()
 	
 	if Input.is_action_pressed("move_left"):
 		vec.x -= speed
@@ -37,11 +38,11 @@ func _physics_process(_delta):
 		vec.y += speed
 	if Input.is_action_pressed("move_up"):
 		vec.y -= speed
-	if can_fire and Input.is_action_pressed("shoot"):
+	if can_fire:
 		can_fire = false
 		shoot()
 	
-	move_and_slide(vec, Vector2.UP)
+	move_and_slide(vec * speed, Vector2.UP)
 
 func shoot():
 	var laser = preload("res://src/nodes/Player_laser_bullet.tscn")
@@ -150,6 +151,5 @@ func blink():
 	show()
 
 func on_timeout_complete():
-	print("Timeout complete")
 	bullets_type = "normal"
 	timer.set_wait_time(0)
