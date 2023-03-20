@@ -6,8 +6,8 @@ var speed : int = 300
 
 var vec : Vector2 = Vector2()
 
-var max_health = 3
-var current_health = 3
+export var max_health = 1
+var current_health = max_health
 
 var can_fire = true
 
@@ -21,8 +21,6 @@ func _ready():
 	timer.set_one_shot(true)
 	timer.connect("timeout", self, "on_timeout_complete")
 	add_child(timer)
-	print("Timeout init")
-
 
 func _physics_process(_delta):
 	
@@ -50,7 +48,7 @@ func shoot():
 	if bullets_type == "normal":
 		bullet.position = Vector2(position.x, position.y)
 		get_parent().call_deferred("add_child", bullet)
-		yield(get_tree().create_timer(0.25), "timeout")
+		yield(get_tree().create_timer(0.5), "timeout")
 		can_fire = true
 	elif bullets_type == "double":
 		bullet.position = Vector2(position.x-15, position.y)
@@ -103,16 +101,22 @@ func _on_Area2D_area_entered(area):
 		current_health -= 1
 		blink()
 		if current_health <= 0:
-			self.queue_free()
-			var explosion = Explosion.instance()
-			get_parent().add_child(explosion)
-			explosion.global_position = global_position
+			game_over()
 	if area.name == "drop_area":
 		var sprite = area.get_parent().get_node("Sprite")
 		area.get_parent().queue_free()
 		Global.Score += 10
 		change_weapons(sprite)
 	pass
+	
+func game_over():
+	var popup = get_tree().get_root().get_node("MainScene/GameOver/Popup")
+	self.queue_free()
+	var explosion = Explosion.instance()
+	get_parent().add_child(explosion)
+	explosion.global_position = global_position
+	get_tree().paused = true
+	popup.popup()
 	
 func change_weapons(sprite):
 	if sprite.get_node("Blue").is_visible():
