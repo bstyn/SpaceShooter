@@ -1,5 +1,4 @@
 extends Label
 
-
 func _ready():
-	self.text = str(Global.Coins)
+	self.text = str(Global.currency.coins)

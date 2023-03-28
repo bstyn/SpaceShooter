@@ -1,13 +1,10 @@
 extends KinematicBody2D
 
-var score : int = 0
-
-var speed : int = 300
+var stats: CharacterStats setget set_stats
 
 var vec : Vector2 = Vector2()
-
-export var max_health = 1
-var current_health = max_health
+var max_health = null	
+var current_health = null
 
 var can_fire = true
 
@@ -17,10 +14,17 @@ var timer = null
 var Explosion = preload ("res://src/nodes/Explosion2.tscn")
 
 func _ready():
+	stats = Global._save.characterstats
+	max_health = stats.max_health
+	current_health = stats.max_health
 	timer = Timer.new()
 	timer.set_one_shot(true)
 	timer.connect("timeout", self, "on_timeout_complete")
 	add_child(timer)
+	
+func set_stats(new_stats: CharacterStats) -> void:
+	stats = new_stats
+	set_physics_process(stats != null)
 
 func _physics_process(_delta):
 	
@@ -28,27 +32,20 @@ func _physics_process(_delta):
 	var joystick = get_tree().get_root().get_node("MainScene/GUI/Joystick")
 	vec = joystick.get_velo()
 	
-	if Input.is_action_pressed("move_left"):
-		vec.x -= speed
-	if Input.is_action_pressed("move_right"):
-		vec.x += speed
-	if Input.is_action_pressed("move_down"):
-		vec.y += speed
-	if Input.is_action_pressed("move_up"):
-		vec.y -= speed
 	if can_fire:
 		can_fire = false
 		shoot()
 	
-	_move_and_slide(vec * speed, Vector2.UP)
+	var _ms_velocity = move_and_slide(vec * stats.move_speed, Vector2.UP)
 
 func shoot():
 	var laser = preload("res://src/nodes/Player_laser_bullet.tscn")
 	var bullet = laser.instance()
+	bullet.player_bullet_dmg = stats.bullet_damage
 	if bullets_type == "normal":
 		bullet.position = Vector2(position.x, position.y)
 		get_parent().call_deferred("add_child", bullet)
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(stats.attack_speed), "timeout")
 		can_fire = true
 	elif bullets_type == "double":
 		bullet.position = Vector2(position.x-15, position.y)
@@ -116,7 +113,9 @@ func game_over():
 	get_parent().add_child(explosion)
 	explosion.global_position = global_position
 	get_tree().paused = true
-	Global.Coins += round(Global.Score/5)
+	stats.max_health += 1
+	Global.currency.coins += round(Global.Score/5)
+	Global._save_game()
 	popup.popup()
 	
 func change_weapons(sprite):
@@ -145,7 +144,7 @@ func change_weapons(sprite):
 		timer.set_wait_time(10)
 		timer.start()
 	elif sprite.get_node("Hearth").is_visible():
-		if current_health < max_health:
+		if current_health < stats.max_health:
 			current_health += 1
 		else:
 			Global.Score += 15
