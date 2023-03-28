@@ -1,6 +1,7 @@
 extends Node
 
 var Score = 0
+var Coins = 0
 var enemyHealth = 3
 
 func increaseHealth(number):

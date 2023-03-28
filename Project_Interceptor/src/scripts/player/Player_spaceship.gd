@@ -40,7 +40,7 @@ func _physics_process(_delta):
 		can_fire = false
 		shoot()
 	
-	move_and_slide(vec * speed, Vector2.UP)
+	_move_and_slide(vec * speed, Vector2.UP)
 
 func shoot():
 	var laser = preload("res://src/nodes/Player_laser_bullet.tscn")
@@ -116,6 +116,7 @@ func game_over():
 	get_parent().add_child(explosion)
 	explosion.global_position = global_position
 	get_tree().paused = true
+	Global.Coins += round(Global.Score/5)
 	popup.popup()
 	
 func change_weapons(sprite):

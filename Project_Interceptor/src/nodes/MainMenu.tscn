@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://MainMenuButtons.tres" type="Theme" id=1]
+[ext_resource path="res://PlayButton.gd" type="Script" id=2]
+[ext_resource path="res://src/assets/sprites/Spaceship/pngkey.com-nasa-spaceship-png-3220715.png" type="Texture" id=3]
+[ext_resource path="res://src/assets/sprites/Interface/background1.jpg" type="Texture" id=4]
+[ext_resource path="res://src/nodes/Score.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/assets/sprites/Interface/coin.png" type="Texture" id=6]
+[ext_resource path="res://src/nodes/MainMenu.gd" type="Script" id=7]
+[ext_resource path="res://src/nodes/MenuCoins.gd" type="Script" id=8]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1984.0
+margin_bottom = -216.0
+flat = true
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Button"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -20.0
+theme = ExtResource( 1 )
+text = "Play"
+align = 1
+valign = 1
+
+[node name="Coins" parent="." instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+margin_left = 720.0
+margin_top = 150.0
+margin_right = -240.0
+margin_bottom = -2220.0
+grow_horizontal = 0
+rect_scale = Vector2( 2.5, 2.5 )
+text = "0"
+align = 2
+valign = 1
+script = ExtResource( 8 )
+
+[node name="Pngkeycom-nasa-spaceship-png-3220715" type="Sprite" parent="."]
+position = Vector2( 540, 1200 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Coin" type="Sprite" parent="."]
+position = Vector2( 520, 180 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 390.0
+margin_top = 1500.0
+margin_right = 690.0
+margin_bottom = 1550.0
+theme = ExtResource( 1 )
+text = "Level 1
+"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
