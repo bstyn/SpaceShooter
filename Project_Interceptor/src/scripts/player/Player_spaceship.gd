@@ -28,7 +28,6 @@ func set_stats(new_stats: CharacterStats) -> void:
 
 func _physics_process(_delta):
 	
-
 	var joystick = get_tree().get_root().get_node("MainScene/GUI/Joystick")
 	vec = joystick.get_velo()
 	
@@ -47,50 +46,7 @@ func shoot():
 		get_parent().call_deferred("add_child", bullet)
 		yield(get_tree().create_timer(stats.attack_speed), "timeout")
 		can_fire = true
-	elif bullets_type == "double":
-		bullet.position = Vector2(position.x-15, position.y)
-		var bullet2 = laser.instance()
-		bullet2.position = Vector2(position.x+15, position.y)
-		get_parent().call_deferred("add_child", bullet)
-		get_parent().call_deferred("add_child", bullet2)
-		yield(get_tree().create_timer(0.3), "timeout")
-		can_fire = true
-	elif bullets_type == "triple":
-		bullet.position = Vector2(position.x-25, position.y-15)
-		var bullet2 = laser.instance()
-		bullet2.position = Vector2(position.x, position.y)
-		var bullet3 = laser.instance()
-		bullet3.position = Vector2(position.x+25, position.y-15)
-		get_parent().call_deferred("add_child", bullet)
-		get_parent().call_deferred("add_child", bullet2)
-		get_parent().call_deferred("add_child", bullet3)
-		yield(get_tree().create_timer(0.4), "timeout")
-		can_fire = true
-	elif bullets_type == "nonstop":
-		bullet.position = Vector2(position.x, position.y)
-		get_parent().call_deferred("add_child", bullet)
-		yield(get_tree().create_timer(0.05), "timeout")
-		can_fire = true
-	elif bullets_type == "big":
-		bullet.position = Vector2(position.x, position.y)
-		bullet.scale = Vector2(2.5,2.5)
-		bullet.player_bullet_dmg = 3
-		get_parent().call_deferred("add_child", bullet)
-		yield(get_tree().create_timer(1), "timeout")
-		can_fire = true
-	elif bullets_type == "ring":
-		laser = preload("res://src/nodes/Player_laser_ringbullet.tscn")
-		bullet = laser.instance()
-		bullet.position = Vector2(position.x, position.y)
-		get_parent().call_deferred("add_child", bullet)
-		yield(get_tree().create_timer(0.4), "timeout")
-		can_fire = true
-	elif bullets_type == "more_dmg":
-		bullet.position = Vector2(position.x, position.y)
-		bullet.player_bullet_dmg = 5
-		get_parent().call_deferred("add_child", bullet)
-		yield(get_tree().create_timer(0.25), "timeout")
-		can_fire = true
+	
 	
 func _on_Area2D_area_entered(area):
 	if area.name == "enemy_laser_bullet_area":
@@ -99,11 +55,6 @@ func _on_Area2D_area_entered(area):
 		blink()
 		if current_health <= 0:
 			game_over()
-	if area.name == "drop_area":
-		var sprite = area.get_parent().get_node("Sprite")
-		area.get_parent().queue_free()
-		Global.Score += 10
-		change_weapons(sprite)
 	pass
 	
 func game_over():
@@ -118,37 +69,6 @@ func game_over():
 	Global._save_game()
 	popup.popup()
 	
-func change_weapons(sprite):
-	if sprite.get_node("Blue").is_visible():
-		bullets_type = "double"
-		timer.set_wait_time(15)
-		timer.start()
-	elif sprite.get_node("Green").is_visible():
-		bullets_type = "triple"
-		timer.set_wait_time(15)
-		timer.start()
-	elif sprite.get_node("Orange").is_visible():
-		bullets_type = "nonstop"
-		timer.set_wait_time(3)
-		timer.start()
-	elif sprite.get_node("Pink").is_visible():
-		bullets_type = "big"
-		timer.set_wait_time(10)
-		timer.start()
-	elif sprite.get_node("Red").is_visible():
-		bullets_type = "ring"
-		timer.set_wait_time(10)
-		timer.start()
-	elif sprite.get_node("White").is_visible():
-		bullets_type = "more_dmg"
-		timer.set_wait_time(10)
-		timer.start()
-	elif sprite.get_node("Hearth").is_visible():
-		if current_health < stats.max_health:
-			current_health += 1
-		else:
-			Global.Score += 15
-
 func blink():
 	hide()
 	yield(get_tree().create_timer(0.05,false), "timeout")

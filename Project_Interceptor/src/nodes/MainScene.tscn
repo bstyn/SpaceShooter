@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/nodes/Player_spaceship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/nodes/Score.tscn" type="PackedScene" id=2]
@@ -16,8 +16,11 @@
 [ext_resource path="res://src/nodes/Joystick.tscn" type="PackedScene" id=14]
 [ext_resource path="res://MainMenuButtons.tres" type="Theme" id=15]
 [ext_resource path="res://src/scripts/GameOverPopup.gd" type="Script" id=16]
-[ext_resource path="res://src/nodes/FinalScore.gd" type="Script" id=17]
-[ext_resource path="res://src/nodes/FinalCoins.gd" type="Script" id=18]
+[ext_resource path="res://src/scripts/FinalScore.gd" type="Script" id=17]
+[ext_resource path="res://src/scripts/FinalCoins.gd" type="Script" id=18]
+[ext_resource path="res://src/scripts/XPBar.gd" type="Script" id=19]
+[ext_resource path="res://src/assets/sprites/xpbar/xpbarempty.png" type="Texture" id=20]
+[ext_resource path="res://src/assets/sprites/xpbar/xpbarfull.png" type="Texture" id=21]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 5 )
@@ -40,7 +43,7 @@ autostart = true
 anchor_left = 0.0
 anchor_top = 0.0
 margin_left = 763.0
-margin_top = 90.0
+margin_top = 115.0
 margin_right = -191.0
 margin_bottom = -2310.0
 grow_horizontal = 0
@@ -52,12 +55,11 @@ valign = 1
 [node name="HP Bar" type="TextureProgress" parent="GUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 50.0
+margin_top = 75.0
 margin_right = -836.0
-margin_bottom = -2343.0
+margin_bottom = -2268.0
 rect_scale = Vector2( 2, 2 )
 theme = ExtResource( 4 )
-value = 100.0
 texture_under = ExtResource( 8 )
 texture_progress = ExtResource( 7 )
 script = ExtResource( 6 )
@@ -66,10 +68,113 @@ script = ExtResource( 6 )
 position = Vector2( 540, 2150 )
 
 [node name="PauseButton" type="TouchScreenButton" parent="GUI"]
-position = Vector2( 980, 150 )
+position = Vector2( 980, 165 )
 scale = Vector2( 0.4, 0.4 )
 normal = ExtResource( 13 )
 visibility_mode = 1
+
+[node name="XP Bar" type="TextureProgress" parent="GUI"]
+margin_top = 50.0
+margin_right = 1080.0
+margin_bottom = 110.0
+value = 50.0
+texture_under = ExtResource( 20 )
+texture_progress = ExtResource( 21 )
+script = ExtResource( 19 )
+
+[node name="LevelUpMenu" type="CanvasLayer" parent="."]
+
+[node name="Popup" type="Popup" parent="LevelUpMenu"]
+pause_mode = 2
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+popup_exclusive = true
+
+[node name="ColorRect" type="ColorRect" parent="LevelUpMenu/Popup"]
+anchor_right = 26.962
+anchor_bottom = 59.957
+margin_left = 20.0
+margin_top = 750.0
+margin_right = -28059.0
+margin_bottom = -142347.0
+color = Color( 0.470588, 0.470588, 0.470588, 0.607843 )
+
+[node name="Label" type="Label" parent="LevelUpMenu/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 277.0
+margin_top = 800.0
+margin_right = -103.0
+margin_bottom = -1471.0
+rect_scale = Vector2( 0.75, 0.75 )
+theme = ExtResource( 15 )
+text = "You Leveled Up
+
+
+Pick Your Upgrade"
+align = 1
+valign = 1
+
+[node name="Upgrade" type="Button" parent="LevelUpMenu/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 1100.0
+margin_right = -780.0
+margin_bottom = -1050.0
+theme = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="LevelUpMenu/Popup/Upgrade"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 62.5
+margin_bottom = 62.5
+rect_scale = Vector2( 0.8, 0.8 )
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Upgrade2" type="Button" parent="LevelUpMenu/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 400.0
+margin_top = 1100.0
+margin_right = -430.0
+margin_bottom = -1050.0
+theme = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="LevelUpMenu/Popup/Upgrade2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 62.5
+margin_bottom = 62.5
+rect_scale = Vector2( 0.8, 0.8 )
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Upgrade3" type="Button" parent="LevelUpMenu/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 750.0
+margin_top = 1100.0
+margin_right = -80.0
+margin_bottom = -1050.0
+theme = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="LevelUpMenu/Popup/Upgrade3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 62.5
+margin_bottom = 62.5
+rect_scale = Vector2( 0.8, 0.8 )
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 
@@ -154,6 +259,7 @@ script = ExtResource( 18 )
 
 [node name="Popup" type="Popup" parent="PauseMenu"]
 pause_mode = 2
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -235,6 +341,7 @@ stretch_mode = 7
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
 [connection signal="pressed" from="GUI/PauseButton" to="PauseMenu/Popup" method="_on_PauseButton_pressed"]
+[connection signal="value_changed" from="GUI/XP Bar" to="GUI/XP Bar" method="_on_XP_Bar_value_changed"]
 [connection signal="pressed" from="GameOver/Popup/GameOverButton" to="GameOver/Popup" method="_on_GameOverButton_pressed"]
 [connection signal="pressed" from="PauseMenu/Popup/Resume" to="PauseMenu/Popup" method="_on_Resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Popup/Restart" to="PauseMenu/Popup" method="_on_Restart_pressed"]

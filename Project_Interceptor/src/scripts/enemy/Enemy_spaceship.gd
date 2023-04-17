@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-var health = Global.enemyHealth
+var maxhealth = Global.enemyHealth
+var health = maxhealth
 export (int) var speed = 125
 var one_drop_chance_percent = 2
 var velocity = Vector2(0, 5)
@@ -27,7 +28,7 @@ func _on_Area2D_area_entered(area):
 		if !audio_destroyed.is_playing():
 			AudioPlayer.play("res://src/assets/sfx/destroyed.mp3")
 		Global.Score += 5
-		generate_drop()
+		Global.experience += maxhealth
 		self.queue_free()
 		var explosion = Explosion.instance()
 		get_parent().add_child(explosion)
@@ -43,29 +44,7 @@ func shoot():
 	get_parent().call_deferred("add_child", bullet)
 	shoot()
 
-func generate_drop():
-	var drop_spawn_chance_range = randi() % 100 + 1
-	var drop_node = preload("res://src/nodes/Drop.tscn")
-	var drop = drop_node.instance()
-	drop.position = Vector2(position.x, position.y)
-	var sprite = drop.get_node("Sprite")
-	if (drop_spawn_chance_range <= one_drop_chance_percent * 1):
-		sprite.get_node("Blue").show()
-	elif (drop_spawn_chance_range <= one_drop_chance_percent * 2):
-		sprite.get_node("Green").show()
-	elif (drop_spawn_chance_range <= one_drop_chance_percent * 3):
-		sprite.get_node("Orange").show()
-	elif (drop_spawn_chance_range <= one_drop_chance_percent * 4):
-		sprite.get_node("Pink").show()
-	elif (drop_spawn_chance_range <= one_drop_chance_percent * 5):
-		sprite.get_node("Red").show()
-	elif (drop_spawn_chance_range <= one_drop_chance_percent * 6):
-		sprite.get_node("White").show()
-	elif (drop_spawn_chance_range <= one_drop_chance_percent * 7):
-		sprite.get_node("Hearth").show()
-	if (drop_spawn_chance_range < one_drop_chance_percent * 7):
-		get_parent().call_deferred("add_child", drop)
-	
+
 func blink():
 	hide()
 	yield(get_tree().create_timer(0.05,false), "timeout")

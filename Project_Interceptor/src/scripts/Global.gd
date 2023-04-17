@@ -2,8 +2,13 @@ extends Node
 
 var currency : Currency
 
+#TEMP
 var Score = 0
 var enemyHealth = 3
+var lvl = 1
+var experience = 0
+var max_experience = 12
+
 
 var _save: SaveGame
 

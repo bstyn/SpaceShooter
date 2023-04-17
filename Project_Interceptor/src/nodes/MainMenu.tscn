@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://MainMenuButtons.tres" type="Theme" id=1]
-[ext_resource path="res://PlayButton.gd" type="Script" id=2]
+[ext_resource path="res://src/scripts/PlayButton.gd" type="Script" id=2]
 [ext_resource path="res://src/assets/sprites/Spaceship/pngkey.com-nasa-spaceship-png-3220715.png" type="Texture" id=3]
 [ext_resource path="res://src/assets/sprites/Interface/background1.jpg" type="Texture" id=4]
 [ext_resource path="res://src/nodes/Score.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/assets/sprites/Interface/coin.png" type="Texture" id=6]
-[ext_resource path="res://src/nodes/MainMenu.gd" type="Script" id=7]
-[ext_resource path="res://src/nodes/MenuCoins.gd" type="Script" id=8]
+[ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=7]
+[ext_resource path="res://src/scripts/MenuCoins.gd" type="Script" id=8]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
