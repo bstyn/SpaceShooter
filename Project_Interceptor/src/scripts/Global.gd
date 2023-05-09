@@ -1,6 +1,7 @@
 extends Node
 
 var currency : Currency
+var upgrades : Upgrades
 
 #TEMP
 var Score = 0
@@ -31,10 +32,12 @@ func _create_or_load_save() -> void:
 		
 		_save.characterstats = CharacterStats.new()
 		_save.currency = Currency.new()
+		_save.upgrades = Upgrades.new()
 		
 		_save.write_savegame()
 		
 	currency = _save.currency
+	upgrades = _save.upgrades
 
 func _save_game() -> void:
 	print("saved")

@@ -1,4 +1,4 @@
 extends Label
 
-func _ready():
+func _process(delta):
 	self.text = str(Global.currency.coins)

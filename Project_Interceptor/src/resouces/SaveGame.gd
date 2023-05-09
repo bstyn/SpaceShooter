@@ -7,6 +7,7 @@ export var version := 1
 
 export var characterstats: Resource
 export var currency: Resource
+export var upgrades: Resource
 
 func write_savegame() -> void:
 	ResourceSaver.save(get_save_path(), self)

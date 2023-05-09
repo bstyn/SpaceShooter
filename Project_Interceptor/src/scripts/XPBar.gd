@@ -12,6 +12,12 @@ func _process(delta):
 	else:
 		self.value = 0
 
+func _close_popup():
+	popup.hide()
+	get_tree().paused = false
+	if is_instance_valid(player):
+		player.set_process_input(false)
+
 
 func _on_XP_Bar_value_changed(value):
 	if Global.experience >= Global.max_experience:
@@ -24,3 +30,19 @@ func _on_XP_Bar_value_changed(value):
 			player.set_process_input(false)
 		popup.popup()
 		
+
+
+func _on_Upgrade_pressed():
+	player.bullet_damage += 1
+	_close_popup()
+
+
+func _on_Upgrade2_pressed():
+	player.attack_speed -= 0.05
+	_close_popup()
+
+
+func _on_Upgrade3_pressed():
+	player.max_health += 1
+	player.current_health +=1
+	_close_popup()

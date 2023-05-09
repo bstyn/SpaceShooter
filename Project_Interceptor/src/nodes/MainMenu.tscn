@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://MainMenuButtons.tres" type="Theme" id=1]
 [ext_resource path="res://src/scripts/PlayButton.gd" type="Script" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://src/assets/sprites/Interface/coin.png" type="Texture" id=6]
 [ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=7]
 [ext_resource path="res://src/scripts/MenuCoins.gd" type="Script" id=8]
+[ext_resource path="res://src/assets/sprites/UpgradeButtonIcon.png" type="Texture" id=9]
+[ext_resource path="res://src/assets/sprites/BattleButtonIcon.png" type="Texture" id=11]
+[ext_resource path="res://src/assets/sprites/UpgradeButtonIconPressed.png" type="Texture" id=12]
+[ext_resource path="res://src/scripts/UpgradeButton.gd" type="Script" id=13]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -73,4 +77,21 @@ text = "Level 1
 align = 1
 valign = 1
 
+[node name="PlayButton" type="TextureButton" parent="."]
+margin_left = 435.0
+margin_top = 2190.0
+margin_right = 645.0
+margin_bottom = 2400.0
+texture_normal = ExtResource( 11 )
+
+[node name="UpgradeButton" type="TextureButton" parent="."]
+margin_left = 220.0
+margin_top = 2190.0
+margin_right = 430.0
+margin_bottom = 2400.0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 12 )
+script = ExtResource( 13 )
+
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="UpgradeButton" to="UpgradeButton" method="_on_UpgradeButton_pressed"]

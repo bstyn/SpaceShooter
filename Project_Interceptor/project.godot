@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "SaveGame",
 "language": "GDScript",
 "path": "res://src/resouces/SaveGame.gd"
+}, {
+"base": "Resource",
+"class": "Upgrades",
+"language": "GDScript",
+"path": "res://src/resouces/Upgrades.gd"
 } ]
 _global_script_class_icons={
 "CharacterStats": "",
 "Currency": "",
-"SaveGame": ""
+"SaveGame": "",
+"Upgrades": ""
 }
 
 [application]
@@ -57,6 +63,7 @@ enabled=PoolStringArray( "res://addons/terminal/plugin.cfg" )
 [global]
 
 layers=false
+android=false
 
 [gui]
 
