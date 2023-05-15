@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/easter egg.png-0224f9376537b44e53770dd9c0bb80d3.stex"
+path="res://.import/Background_v2.png-fce513eb61c996cf5558e33aaa8b9a2c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/assets/sprites/easter egg.png"
-dest_files=[ "res://.import/easter egg.png-0224f9376537b44e53770dd9c0bb80d3.stex" ]
+source_file="res://src/assets/sprites/Interface/Background_v2.png"
+dest_files=[ "res://.import/Background_v2.png-fce513eb61c996cf5558e33aaa8b9a2c.stex" ]
 
 [params]
 

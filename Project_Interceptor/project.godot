@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Project Interceptor"
-run/main_scene="res://src/nodes/StartMenu.tscn"
+run/main_scene="res://src/nodes/Scenes/StartMenu.tscn"
 config/icon="res://src/icon.png"
 
 [autoload]

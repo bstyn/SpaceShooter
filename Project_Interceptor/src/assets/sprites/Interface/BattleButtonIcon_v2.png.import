@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BattleButtonIconPressed.png-e4951bf07b7dabc5e7e98d2010af20e2.stex"
+path="res://.import/BattleButtonIcon_v2.png-701ea7248921639e6b200cf5502030c8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/assets/sprites/BattleButtonIconPressed.png"
-dest_files=[ "res://.import/BattleButtonIconPressed.png-e4951bf07b7dabc5e7e98d2010af20e2.stex" ]
+source_file="res://src/assets/sprites/Interface/BattleButtonIcon_v2.png"
+dest_files=[ "res://.import/BattleButtonIcon_v2.png-701ea7248921639e6b200cf5502030c8.stex" ]
 
 [params]
 

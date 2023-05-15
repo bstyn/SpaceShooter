@@ -303,6 +303,7 @@ script = ExtResource( 18 )
 
 [node name="Popup" type="Popup" parent="PauseMenu"]
 pause_mode = 2
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -317,11 +318,32 @@ margin_right = -140.0
 margin_bottom = -725.0
 color = Color( 0.470588, 0.470588, 0.470588, 0.607843 )
 
-[node name="Resume" type="Button" parent="PauseMenu/Popup"]
+[node name="Label" type="Label" parent="PauseMenu/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 425.0
+margin_top = 720.0
+margin_right = -425.0
+margin_bottom = -1650.0
+theme = ExtResource( 15 )
+text = "Sound"
+
+[node name="Volume" type="HSlider" parent="PauseMenu/Popup"]
 margin_left = 165.0
 margin_top = 750.0
+margin_right = 465.0
+margin_bottom = 790.0
+rect_scale = Vector2( 2.5, 2.5 )
+min_value = -80.0
+max_value = 0.0
+value = -20.0
+scrollable = false
+
+[node name="Resume" type="Button" parent="PauseMenu/Popup"]
+margin_left = 165.0
+margin_top = 1050.0
 margin_right = 915.0
-margin_bottom = 1000.0
+margin_bottom = 1300.0
 
 [node name="Label" type="Label" parent="PauseMenu/Popup/Resume"]
 anchor_right = 1.0
@@ -329,21 +351,6 @@ anchor_bottom = 1.008
 margin_right = 2.0
 theme = ExtResource( 15 )
 text = "RESUME"
-align = 1
-valign = 1
-
-[node name="Restart" type="Button" parent="PauseMenu/Popup"]
-margin_left = 165.0
-margin_top = 1050.0
-margin_right = 915.0
-margin_bottom = 1300.0
-
-[node name="Label" type="Label" parent="PauseMenu/Popup/Restart"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = -2.0
-theme = ExtResource( 15 )
-text = "RESTART"
 align = 1
 valign = 1
 
@@ -389,6 +396,6 @@ stretch_mode = 7
 [connection signal="pressed" from="LevelUpMenu/Popup/Upgrade2" to="GUI/XP Bar" method="_on_Upgrade2_pressed"]
 [connection signal="pressed" from="LevelUpMenu/Popup/Upgrade3" to="GUI/XP Bar" method="_on_Upgrade3_pressed"]
 [connection signal="pressed" from="GameOver/Popup/GameOverButton" to="GameOver/Popup" method="_on_GameOverButton_pressed"]
+[connection signal="value_changed" from="PauseMenu/Popup/Volume" to="AudioPlayer" method="_on_Volume_value_changed"]
 [connection signal="pressed" from="PauseMenu/Popup/Resume" to="PauseMenu/Popup" method="_on_Resume_pressed"]
-[connection signal="pressed" from="PauseMenu/Popup/Restart" to="PauseMenu/Popup" method="_on_Restart_pressed"]
 [connection signal="pressed" from="PauseMenu/Popup/Exit" to="PauseMenu/Popup" method="_on_Exit_pressed"]

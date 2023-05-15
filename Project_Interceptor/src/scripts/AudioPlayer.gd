@@ -33,3 +33,7 @@ func _process(_delta):
 		available[0].stream = load(queue.pop_front())
 		available[0].play()
 		available.pop_front()
+
+
+func _on_Volume_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),value)

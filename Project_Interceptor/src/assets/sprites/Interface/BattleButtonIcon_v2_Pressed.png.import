@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UpgradesBackground.png-3c3afa07ed5986a4e4f96b64015d723d.stex"
+path="res://.import/BattleButtonIcon_v2_Pressed.png-076f8b4d49748da6d2e990ea877bfe2d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/assets/sprites/UpgradesBackground.png"
-dest_files=[ "res://.import/UpgradesBackground.png-3c3afa07ed5986a4e4f96b64015d723d.stex" ]
+source_file="res://src/assets/sprites/Interface/BattleButtonIcon_v2_Pressed.png"
+dest_files=[ "res://.import/BattleButtonIcon_v2_Pressed.png-076f8b4d49748da6d2e990ea877bfe2d.stex" ]
 
 [params]
 

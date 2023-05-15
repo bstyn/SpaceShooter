@@ -20,15 +20,8 @@ func _on_Resume_pressed():
 			player.set_process_input(false)
 
 
-func _on_Restart_pressed():
+func _on_Exit_pressed():
 	if get_tree().paused:
 		hide()
-		get_tree().paused = false				
-		if is_instance_valid(player):
-			player.set_process_input(false)
-	Global.Score = 0
-	get_tree().reload_current_scene()
-
-
-func _on_Exit_pressed():
-	get_tree().quit()
+		get_tree().paused = false	
+	player.game_over()

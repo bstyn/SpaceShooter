@@ -3,14 +3,14 @@
 [ext_resource path="res://MainMenuButtons.tres" type="Theme" id=1]
 [ext_resource path="res://src/scripts/PlayButton.gd" type="Script" id=2]
 [ext_resource path="res://src/assets/sprites/Spaceship/pngkey.com-nasa-spaceship-png-3220715.png" type="Texture" id=3]
-[ext_resource path="res://src/assets/sprites/Interface/background1.jpg" type="Texture" id=4]
+[ext_resource path="res://src/assets/sprites/Interface/UpgradeButton_v2_pressed.png" type="Texture" id=4]
 [ext_resource path="res://src/nodes/Score.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/assets/sprites/Interface/coin.png" type="Texture" id=6]
 [ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=7]
 [ext_resource path="res://src/scripts/MenuCoins.gd" type="Script" id=8]
-[ext_resource path="res://src/assets/sprites/UpgradeButtonIcon.png" type="Texture" id=9]
-[ext_resource path="res://src/assets/sprites/BattleButtonIcon.png" type="Texture" id=11]
-[ext_resource path="res://src/assets/sprites/UpgradeButtonIconPressed.png" type="Texture" id=12]
+[ext_resource path="res://src/assets/sprites/Interface/Background_v2.png" type="Texture" id=9]
+[ext_resource path="res://src/assets/sprites/Interface/BattleButtonIcon_v2.png" type="Texture" id=10]
+[ext_resource path="res://src/assets/sprites/Interface/UpgradeButtonIcon_v2.png" type="Texture" id=11]
 [ext_resource path="res://src/scripts/UpgradeButton.gd" type="Script" id=13]
 
 [node name="MainMenu" type="Control"]
@@ -22,7 +22,7 @@ script = ExtResource( 7 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 4 )
+texture = ExtResource( 9 )
 
 [node name="Button" type="Button" parent="."]
 anchor_right = 1.0
@@ -82,15 +82,15 @@ margin_left = 435.0
 margin_top = 2190.0
 margin_right = 645.0
 margin_bottom = 2400.0
-texture_normal = ExtResource( 11 )
+texture_normal = ExtResource( 10 )
 
 [node name="UpgradeButton" type="TextureButton" parent="."]
 margin_left = 220.0
 margin_top = 2190.0
 margin_right = 430.0
 margin_bottom = 2400.0
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 12 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 4 )
 script = ExtResource( 13 )
 
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
