@@ -34,12 +34,8 @@ position = Vector2( 540, 1700 )
 scale = Vector2( 4, 4 )
 
 [node name="Player_area" parent="." instance=ExtResource( 3 )]
-position = Vector2( 4, 1350 )
-scale = Vector2( 1.055, 3 )
-
-[node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
+position = Vector2( 0, 850 )
+scale = Vector2( 1.055, 8 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -389,7 +385,6 @@ texture = ExtResource( 12 )
 expand = true
 stretch_mode = 7
 
-[connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
 [connection signal="pressed" from="GUI/PauseButton" to="PauseMenu/Popup" method="_on_PauseButton_pressed"]
 [connection signal="value_changed" from="GUI/XP Bar" to="GUI/XP Bar" method="_on_XP_Bar_value_changed"]
 [connection signal="pressed" from="LevelUpMenu/Popup/Upgrade" to="GUI/XP Bar" method="_on_Upgrade_pressed"]

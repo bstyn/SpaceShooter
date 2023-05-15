@@ -14,8 +14,6 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="player_laser_bullet_area" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_laser_bullet_area"]
 position = Vector2( 0, -4.76837e-07 )

@@ -13,6 +13,8 @@ var bullets_type = "normal"
 var bullet_damage = null
 var timer = null
 
+var iframes = false
+
 var Explosion = preload ("res://src/nodes/Explosion2.tscn")
 
 func _ready():
@@ -46,20 +48,31 @@ func shoot():
 	var bullet = laser.instance()
 	bullet.player_bullet_dmg = bullet_damage
 	if bullets_type == "normal":
-		bullet.position = Vector2(position.x, position.y)
+		bullet.position = Vector2(position.x, position.y-100)
 		get_parent().call_deferred("add_child", bullet)
 		yield(get_tree().create_timer(attack_speed), "timeout")
 		can_fire = true
 	
 	
 func _on_Area2D_area_entered(area):
+	print(area.name)
 	if area.name == "enemy_laser_bullet_area":
 		area.get_parent().queue_free()
 		current_health -= 1 * (1 - stats.dmg_reduction)
 		blink()
 		if current_health <= 0:
 			game_over()
-	pass
+	if area.name == "enemy_spaceship_area" and !iframes:
+		current_health -= 1 * (1 - stats.dmg_reduction)
+		blink()
+		iframes = true
+		if current_health <= 0:
+			game_over()
+	
+func _iframes_timer():
+	yield(get_tree().create_timer(0.25,false), "timeout")
+	iframes = true
+	
 	
 func game_over():
 	var popup = get_tree().get_root().get_node("MainScene/GameOver/Popup")
@@ -83,3 +96,7 @@ func blink():
 func on_timeout_complete():
 	bullets_type = "normal"
 	timer.set_wait_time(0)
+
+
+
+	
