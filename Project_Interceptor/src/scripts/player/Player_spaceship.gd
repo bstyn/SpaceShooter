@@ -55,7 +55,6 @@ func shoot():
 	
 	
 func _on_Area2D_area_entered(area):
-	print(area.name)
 	if area.name == "enemy_laser_bullet_area":
 		area.get_parent().queue_free()
 		current_health -= 1 * (1 - stats.dmg_reduction)
@@ -85,6 +84,8 @@ func game_over():
 	Global.lvl = 1
 	Global.experience = 0
 	Global.max_experience = 12
+	Global.spawn_number = 1
+	Global.enemyHealth = 3
 	Global._save_game()
 	popup.popup()
 	

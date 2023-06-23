@@ -2,7 +2,7 @@
 
 [ext_resource path="res://MainMenuButtons.tres" type="Theme" id=1]
 [ext_resource path="res://src/scripts/PlayButton.gd" type="Script" id=2]
-[ext_resource path="res://src/assets/sprites/Spaceship/pngkey.com-nasa-spaceship-png-3220715.png" type="Texture" id=3]
+[ext_resource path="res://src/assets/sprites/SpriteSheets/spaceship_spritesheet.png" type="Texture" id=3]
 [ext_resource path="res://src/assets/sprites/Interface/UpgradeButton_v2_pressed.png" type="Texture" id=4]
 [ext_resource path="res://src/nodes/Score.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/assets/sprites/Interface/coin.png" type="Texture" id=6]
@@ -56,11 +56,6 @@ align = 2
 valign = 1
 script = ExtResource( 8 )
 
-[node name="Pngkeycom-nasa-spaceship-png-3220715" type="Sprite" parent="."]
-position = Vector2( 540, 1200 )
-rotation = 1.5708
-texture = ExtResource( 3 )
-
 [node name="Coin" type="Sprite" parent="."]
 position = Vector2( 520, 180 )
 scale = Vector2( 2.5, 2.5 )
@@ -92,6 +87,13 @@ margin_bottom = 2400.0
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 4 )
 script = ExtResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 540, 1200 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 100, 100 )
 
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="UpgradeButton" to="UpgradeButton" method="_on_UpgradeButton_pressed"]

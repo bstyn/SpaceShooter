@@ -4,7 +4,6 @@ onready var player = get_node("../../Player_spaceship")
 
 func _on_PauseButton_pressed():
 	# Pause game
-	print(get_tree())
 	get_tree().paused = true
 	# Show popup
 	if is_instance_valid(player):

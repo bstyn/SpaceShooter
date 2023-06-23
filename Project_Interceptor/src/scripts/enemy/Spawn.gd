@@ -7,6 +7,8 @@ var spawn_time = 20.0
 
 func _ready():
 	set_stats(Global._save.characterstats)
+	Global.increaseHealth(2)
+	Global.increaseSpawn(1)
 	spawn_enemy()
 
 func set_stats(new_stats: CharacterStats) -> void:
@@ -22,7 +24,8 @@ func spawn_enemy():
 	add_child(e)
 	delete_self(e)
 	yield(get_tree().create_timer(time,false), "timeout")
-	spawn_enemy()
+	for x in range(Global.spawn_number):
+		spawn_enemy()
 	
 	
 func delete_self(e):

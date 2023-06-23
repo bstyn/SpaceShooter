@@ -34,6 +34,7 @@ position = Vector2( 540, 1700 )
 scale = Vector2( 4, 4 )
 
 [node name="Player_area" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 0, 850 )
 scale = Vector2( 1.055, 8 )
 
@@ -83,6 +84,7 @@ texture_progress = ExtResource( 21 )
 script = ExtResource( 19 )
 
 [node name="Damage" type="Label" parent="GUI"]
+visible = false
 margin_top = 500.0
 margin_right = 100.0
 margin_bottom = 540.0
@@ -92,6 +94,7 @@ text = "3
 script = ExtResource( 24 )
 
 [node name="Attack_speed" type="Label" parent="GUI"]
+visible = false
 margin_top = 600.0
 margin_right = 109.0
 margin_bottom = 640.0
@@ -100,6 +103,7 @@ text = "0.4"
 script = ExtResource( 23 )
 
 [node name="HP" type="Label" parent="GUI"]
+visible = false
 margin_top = 700.0
 margin_right = 100.0
 margin_bottom = 740.0
@@ -108,6 +112,7 @@ text = "3"
 script = ExtResource( 22 )
 
 [node name="CurrHP" type="Label" parent="GUI"]
+visible = false
 margin_top = 800.0
 margin_right = 100.0
 margin_bottom = 840.0
@@ -120,6 +125,7 @@ script = ExtResource( 25 )
 
 [node name="Popup" type="Popup" parent="LevelUpMenu"]
 pause_mode = 2
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -221,6 +227,7 @@ clip_text = true
 
 [node name="Popup" type="Popup" parent="GameOver"]
 pause_mode = 2
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -7.0

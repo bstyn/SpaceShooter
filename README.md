@@ -11,8 +11,6 @@ Simple 2d game made in Godot engine.
 
 - Space Background Game | https://wallpaperaccess.com/full/560134.jpg
 
-- Space Background Menu | https://i.pinimg.com/originals/b6/10/ae/b610aed0a658b7996e525587227636d1.jpg
-
 # Demo Videos
 
 - Gameplay PC | https://www.youtube.com/watch?v=ruOpZchXHtg&feature=youtu.be

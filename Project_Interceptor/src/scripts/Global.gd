@@ -9,25 +9,30 @@ var enemyHealth = 3
 var lvl = 1
 var experience = 0
 var max_experience = 12
+var spawn_number = 1
 
 
 var _save: SaveGame
 
 func _ready() -> void:
 	_create_or_load_save()
-	increaseHealth(2)
+
 
 func increaseHealth(number):
-	yield(get_tree().create_timer(300,false), "timeout")
+	yield(get_tree().create_timer(60,false), "timeout")
 	enemyHealth += number
 	increaseHealth(2)
+	
+func increaseSpawn(number):
+	yield(get_tree().create_timer(120,false), "timeout")
+	spawn_number += number
+	increaseSpawn(number)
+	
 
 func _create_or_load_save() -> void:
 	if SaveGame.save_exists():
-		print("Save loaded")
 		_save = SaveGame.load_savegame() as SaveGame
 	else:
-		print("No game save found")
 		_save = SaveGame.new()
 		
 		_save.characterstats = CharacterStats.new()
@@ -40,6 +45,5 @@ func _create_or_load_save() -> void:
 	upgrades = _save.upgrades
 
 func _save_game() -> void:
-	print("saved")
 	_save.write_savegame()
 	
